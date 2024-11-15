@@ -1,0 +1,113 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <!-- bradcam_area_start -->
+    <div class="bradcam_area breadcam_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Услуги</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end -->
+
+    <!-- service_area_start  -->
+    <div class="service_area">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-7 col-md-10">
+                    <div class="section_title text-center mb-95">
+                        <h3>Услуги для каждого питомца</h3>
+                        <p>Полный комплекс услуг по стрижке и уходу за домашними животными.
+                            <br>Работаем со всеми породами кошек и собак.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                {% for h in home %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_service">
+                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
+                             <div class="service_icon">
+                                 <img src="{{ h.featured_images.url }}" alt="">
+                             </div>
+                         </div>
+                         <div class="service_content text-center">
+                            <h3>{{ h.title }}</h3>
+                            <p>{{ h.description }}</p>
+                         </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+<section class="choose">
+    <div class="wrap">
+        <h2>Цены на услуги</h2>
+        {% for us in usluga %}
+        <div class="block">
+            <div class="element">
+                <div>
+                    <h5>{{ us.name }}</h5>
+                </div>
+
+                <div class="table">
+                    <table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="left">Услуга</th>
+                                <th class="right">Цена</th>
+                             </tr>
+                        </thead>
+                            {% for pr in us.uslugaprice_set.all %}
+                            <tbody>
+                            <tr>
+                                <td class="left">{{ pr.name_service }}</td>
+                                <td class="right">{{ pr.price }} руб</td>
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+    <!-- team_area_start  -->
+
+    <!-- contact_anipat_start  -->
+    <div class="contact_anipat anipat_bg_1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact_text text-center">
+                        <div class="section_title text-center">
+                            <h3>Почему нас стоит посетить?</h3>
+                            <p>У нас ваши питомцы смогут насладиться СПА-процедурами, постричься и весело провести время.
+В своей работе мы используем профессиональную косметику для животных, расходные материалы и стерильный инструмент
+                                только ведущих брендов.</p>
+                        </div>
+                        <div class="contact_btn d-flex align-items-center justify-content-center">
+                            <a href="{% url 'contact' %}" class="boxed-btn4">Связаться с нами</a>
+                            <p>Или -  8 927 578 33 55</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider slider_bg_1 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="slider_text">
+                            <h3>Мы заботимся <br> <span>О вашем питомце </span></h3>
+                            <p>Станем вторым лучшим другом для вашего питомца</p>
+                            <a href="{% url 'contact' %}" class="boxed-btn4">Связаться с нами</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dog_thumb d-none d-lg-block">
+                <img src="{% static 'img/banner/dog.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- service_area_start  -->
+    <div class="service_area">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-7 col-md-10">
+                    <div class="section_title text-center mb-95">
+                        <h3>Услуги для каждого питомца</h3>
+                        <p>Полный комплекс услуг по стрижке и уходу за домашними животными.
+                            <br>Работаем со всеми породами кошек и собак.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                {% for h in home %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_service">
+                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
+                             <div class="service_icon">
+                                 <img src="{{ h.featured_images.url }}" alt="">
+                             </div>
+                         </div>
+                         <div class="service_content text-center">
+                            <h3>{{ h.title }}</h3>
+                            <p>{{ h.description }}</p>
+                         </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- service_area_end -->
+
+    <!-- pet_care_area_start  -->
+    <div class="pet_care_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="pet_thumb">
+                        <img src="{% static 'img/about/pet_care.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 col-md-6">
+                    <div class="pet_info">
+                        <div class="section_title">
+                            <h3><span>Мы заботимся о вашем питомце </span></h3>
+                            <p>Мы гарантируем безопасность питомцу – сделаем стрижку собак и кошек на высшем уровне.
+                                Наш большой опыт, любовь к животным и доброжелательное отношение позволяет подбирать
+                                индивидуальный подход к каждому животному. Посетите салон –
+                                и пусть ваш любимец почувствует себя иконой стиля.</p>
+                            <a href="{% url 'about' %}" class="boxed-btn3">О нас</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- pet_care_area_end  -->
+
+    <!-- adapt_area_start  -->
+    <div class="adapt_area">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-5">
+                    <div class="adapt_help">
+                        <div class="section_title">
+                            <h3><span>Почему стоит нас посетить?</span></h3>
+                            <p>У нас ваши питомцы смогут насладиться СПА-процедурами, постричься и весело провести время.
+                            <br>В своей работе мы используем профессиональную косметику для животных, расходные
+                                материалы и стерильный инструмент только ведущих брендов..</p>
+                            <a href="{% url 'service' %}" class="boxed-btn3">Наши услуги</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="adapt_about">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_adapt text-center">
+                                    <img src="{% static 'img/adapt_icon/1.png' %}" alt="">
+                                    <div class="adapt_content">
+                                        <h3 class="counter">100</h3>
+                                        <p>Отзывов наших клиентов</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_adapt text-center">
+                                    <img src="{% static 'img/adapt_icon/3.png' %}" alt="">
+                                    <div class="adapt_content">
+                                        <h3><span class="counter">500</span>+</h3>
+                                        <p>Счастливых владельцев</p>
+                                    </div>
+                                </div>
+                                <div class="single_adapt text-center">
+                                    <img src="{% static 'img/adapt_icon/2.png' %}" alt="">
+                                    <div class="adapt_content">
+                                        <h3><span class="counter">500</span>+</h3>
+                                        <p>Довольных кошек и собак</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- adapt_area_end  -->
+
+    <!-- testmonial_area_start  -->
+    <div class="testmonial_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="textmonial_active owl-carousel">
+                        {% for re in reviews %}
+                        <div class="testmonial_wrap">
+                            <div class="single_testmonial d-flex align-items-center">
+                                <div class="test_thumb">
+                                    <img src="{{ re.featured_images.url }}" alt="">
+                                </div>
+                                <div class="test_content">
+                                    <h4>{{ re.name }}</h4>
+                                    <p>{{ re.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- testmonial_area_end  -->
+
+    <!-- team_area_start  -->
+    <div class="team_area">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-6 col-md-10">
+                    <div class="section_title text-center mb-95">
+                        <h3>Наша команда</h3>
+                        <p>В салоне работают опытные и обученные грумеры, которые знают,
+                            как правильно ухаживать за различными породами животных </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                {% for t in team %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{ t.featured_images.url }}" alt="">
+                        </div>
+                        <div class="member_name text-center">
+                            <div class="mamber_inner">
+                                <h4>{{ t.name }}</h4>
+                                <p>{{t.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
